@@ -43,8 +43,22 @@ function updateTodoById(id, body) {
 	});
 }
 
+function deleteTodoById(id) {
+	return new Promise((resolve, reject) => {
+		Todo.findByIdAndDelete(
+            id
+        )
+			.then((payload) => {
+				resolve(payload);
+			}).catch((error) => {
+				reject(error);
+			})
+	});
+}
+
 module.exports = {
 	getAllTodo,
 	createTodo,
 	updateTodoById,
+    deleteTodoById
 };
